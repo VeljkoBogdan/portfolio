@@ -1,0 +1,108 @@
+* {
+    font-family: Inter, sans-serif;
+    font-size: 25px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: #101010;
+    color: #818181;
+}
+
+* h1 {
+    color: #AAA;
+    font-size: larger;
+}
+
+* a {
+    color: mediumpurple;
+    transition: 0.3s ease;
+}
+
+* a:hover {
+    color: rebeccapurple;
+    transition: 0.3s ease;
+}
+
+.sidenav {
+    height: 100%;
+    width: 50px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    padding-top: 60px;
+    padding-right: 16px;
+    transition: 0.4s;
+    overflow-x: hidden;
+}
+
+.sidenav * {
+    background-color: #000;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: inline-block;
+    transition: 0.1s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav ul {
+    margin-top: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+.nav-inner {
+    width: 340px;
+}
+
+.navhide {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    display: inline-block;
+}
+
+.navhide.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#main .page {
+    display: none;
+    min-width: 300px;
+    max-width: 900px;
+}
+
+#main .page.active {
+    display: block;
+}
+
+#main {
+    height: 100%;
+    margin-left: 70px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    transition: margin-left .4s ease;
+    padding: 20px 20px 20px 20px;
+    text-align: center;
+    overflow: visible;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}

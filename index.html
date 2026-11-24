@@ -1,0 +1,104 @@
+<html lang="en-US">
+<head>
+    <title> Veljko's Portfolio </title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body>
+<div id="sidenav" class="sidenav" onmouseenter="openNav()" onmouseleave="closeNav()">
+    <div class="nav-inner">
+        <a href="#" class="navhide is-hidden">Me</a>
+        <section class="navhide is-hidden">
+            <a>Programming Projects</a>
+            <ul>
+                <li><a href="#refactory">ReFactory: Expert</a></li>
+                <li><a href="#cubegame">OpenGL Cube Game</a></li>
+                <li><a href="#gregcrops">GregCrops</a></li>
+                <li><a href="#quizzardapp">QuizzardApp</a></li>
+                <li><a href="#tspaco">Travelling Salesman Problem: Ant Colony Optimisation</a></li>
+                <li><a href="#othergames">Pong, Breakout, GameOfLife</a></li>
+                <li><a href="#sam">Spells and Magicks</a></li>
+                <li><a href="#webdev">Smaller WebDev Projects</a></li>
+            </ul>
+            <a>Other Projects</a>
+            <ul>
+                <li><a href="#pc">PC Building and Tweaking</a></li>
+                <li><a href="#dip">Diplomacy Variants and GM-ing</a></li>
+                <li><a href="#music">Music Production</a></li>
+                <li><a href="#pixelart">Pixelart</a></li>
+            </ul>
+        </section>
+    </div>
+</div>
+
+<div id="main">
+    <article id="aboutme" class="page active">
+        <h1>About Me</h1>
+        <p>Hello! My name is Veljko Bogdan, or IlluminatiJoe on the internet.</p>
+        <p>I am a programmer with a Bachelor's in Informatics and Systems Engineering.</p>
+        <p>I love to code and have coded site backends, tools, games, mods and modpacks. I mostly use C++, Java, PHP, and JavaScript, though I know some C# and Python.</p>
+        <p>Other than coding, I am heavily into games (often tech and automation related), music and guitar.</p>
+    </article>
+    <article id="refactory" class="page">
+        <h1>ReFactory: Expert</h1>
+        <p>ReFactory is the largest project, and the longest one that I've worked on. I have semi-consistently been working on it for the past 3 years (at the time of writing - November 2026).</p>
+        <p>It is a tech modpack for Minecraft, and a labor of love, which almost 2k people have played.
+            The project page can be viewed <a href="https://www.curseforge.com/minecraft/modpacks/re-factory">here</a></p>
+        <p>A large portion of the modifications that I've done was through KubeJS. KubeJS is a mod that allows scripting
+            various aspects of the game and other mods through JavaScript. It uses a modified version of Rhino that
+            translates JS to Java. This allows me to edit game and mod events, add or remove items, recipes, machines, etc.</p>
+        <p>The modpack also heavily relies on GregTechCEu's API, which I've needed to learn through their docs and source code for difficult edits.</p>
+        <p>Although KubeJS offers a lot of tools, some modifications I couldn't do through it, especially the ones that
+            rely on GregTech's source code instead of their built-in KubeJS integration API.
+            That's when I've decided to make my own mod - ReFactory Core. It allows custom machines, advanced machine logic,
+            advanced recipe logic, custom icon sets, custom sounds, etc.
+        </p>
+    </article>
+    <article id="cubegame" class="page">
+        <h1>Voxel Game using OpenGL</h1>
+        <p>I wanted to challenge myself by learning graphics programming using OpenGL, since I couldn't understand what
+            was happening under the hood of the GL abstraction libraries like raylib and libgdx.</p>
+        <p>This was written in C++ and other functional libraries like glad, glfw and FastNoise2.
+            It is my most difficult project to date (November 2026).</p>
+        <p>The most difficult thing to implement, yet the most rewarding, was batch rendering (indirect buffer).
+            Since I did not want to make just another Minecraft clone, and the sound of a truly infinite, procedurally
+            generated world excites me, I decided to make this project have infinite generation in all three directions
+            (x, y and z). In contrast, Minecraft has only 2 truly infinite directions, x and z, with the y going from
+            -64 to around 320. Minecraft divides the world into a 2D matrix of 16x16 chunks, since the Y is constant.
+            In this game though, Y is not constant, so the world is divided into a 3D array of 16x16x16 chunks. At 16
+            render distance, Minecraft's world has 16x16=256 chunks (x^2), and can get away with having a draw call for every
+            single one. In this game, 16 render distance means 16x16x16=4096 chunks (x^3), that means I couldn't get away
+            with having a draw call for every single one. Luckily, OpenGL 4.3 introduced indirect buffer rendering,
+            which allows me to send all the chunks and a transformation matrix for them to the shader, which offsets
+            all the work from the CPU to the GPU, which can process it in parallel. This comes at a drawback - MacOS
+            dropped support of OpenGL since 4.1, so my program cannot be run on Mac PCs.
+        </p>
+        <p>Apart from that, I've also implemented Fast Approximate Anti-Aliasing (FXAA), Raycasts, Fast noise generation using
+            SIMD instructions (FastNoise2 library), day-night cycle, multithreaded chunk loading, unloading, and
+            remeshing, and several other smaller implementations.
+        </p>
+        <p>
+            Project description with screenshots, as well as playable (pre)releases are <a href="https://github.com/VeljkoBogdan/opengl_cube_game">here</a>.
+        </p>
+    </article>
+    <article id="gregcrops" class="page">
+        <h1>GregCrops</h1>
+        <p>GregCrops is a mod I've made designed for ReFactory: Expert, but that can also be used as standalone.</p>
+        <p>It's an addon to the mod GregTechCEu, and adds customizable crops of different GregTech materials
+            (e.g. salt, aluminium, copper). It was made with ReFactory in mind as the modpack was already floral-themed</p>
+        <p>The seeds are registered using another mod or KubeJS, and then they get generated upon game start. Each
+            seed generates alongside a crop. Once fully grown it can be harvested. The seed material and the dropped
+            item can be customized. The seeds and crops get automatically colored depending on the seed material.</p>
+        <p>The mod relies heavily on GTCEu's API and source code to work, and still has some ironing out to do.</p>
+        <p>The mod page, as well as a short usage tutorial can be found
+            <a href="https://www.curseforge.com/minecraft/mc-mods/greg-crops">here</a></p>
+    </article>
+    <article id="quizzardapp" class="page">
+        <h1>QuizzardApp</h1>
+        <p></p>
+    </article>
+    <br/>
+    <br/>
+</div>
+</body>
+</html>
